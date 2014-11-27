@@ -1,0 +1,24 @@
+[23-Sep-2012 17:31:23 UTC] PHP Notice:  Undefined variable: ss in D:\wamp\www\lx\newmvc\redrock\redrock.php on line 37
+[23-Sep-2012 17:31:23 UTC] PHP Stack trace:
+[23-Sep-2012 17:31:23 UTC] PHP   1. {main}() D:\wamp\www\lx\newmvc\index.php:0
+[23-Sep-2012 17:31:23 UTC] PHP   2. require() D:\wamp\www\lx\newmvc\index.php:10
+[23-Sep-2012 17:31:24 UTC] PHP Notice:  Undefined variable: ss in D:\wamp\www\lx\newmvc\redrock\redrock.php on line 37
+[23-Sep-2012 17:31:24 UTC] PHP Stack trace:
+[23-Sep-2012 17:31:24 UTC] PHP   1. {main}() D:\wamp\www\lx\newmvc\index.php:0
+[23-Sep-2012 17:31:24 UTC] PHP   2. require() D:\wamp\www\lx\newmvc\index.php:10
+[24-Sep-2012 16:28:39 UTC] PHP Notice:  Undefined variable: ss in D:\wamp\www\lx\newmvc\redrock\redrock.php on line 37
+[24-Sep-2012 16:28:39 UTC] PHP Stack trace:
+[24-Sep-2012 16:28:39 UTC] PHP   1. {main}() D:\wamp\www\lx\newmvc\index.php:0
+[24-Sep-2012 16:28:39 UTC] PHP   2. require() D:\wamp\www\lx\newmvc\index.php:10
+[24-Sep-2012 16:28:41 UTC] PHP Notice:  Undefined variable: ss in D:\wamp\www\lx\newmvc\redrock\redrock.php on line 37
+[24-Sep-2012 16:28:41 UTC] PHP Stack trace:
+[24-Sep-2012 16:28:41 UTC] PHP   1. {main}() D:\wamp\www\lx\newmvc\index.php:0
+[24-Sep-2012 16:28:41 UTC] PHP   2. require() D:\wamp\www\lx\newmvc\index.php:10
+[24-Sep-2012 16:28:41 UTC] PHP Notice:  Undefined variable: ss in D:\wamp\www\lx\newmvc\redrock\redrock.php on line 37
+[24-Sep-2012 16:28:41 UTC] PHP Stack trace:
+[24-Sep-2012 16:28:41 UTC] PHP   1. {main}() D:\wamp\www\lx\newmvc\index.php:0
+[24-Sep-2012 16:28:41 UTC] PHP   2. require() D:\wamp\www\lx\newmvc\index.php:10
+[24-Sep-2012 16:28:42 UTC] PHP Notice:  Undefined variable: ss in D:\wamp\www\lx\newmvc\redrock\redrock.php on line 37
+[24-Sep-2012 16:28:42 UTC] PHP Stack trace:
+[24-Sep-2012 16:28:42 UTC] PHP   1. {main}() D:\wamp\www\lx\newmvc\index.php:0
+[24-Sep-2012 16:28:42 UTC] PHP   2. require() D:\wamp\www\lx\newmvc\index.php:10

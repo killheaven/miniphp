@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title><{$title}></title>
+<{foreach from=$cssSources item=k}>
+	<{foreach from=$k item=v}>
+	<link rel="stylesheet" type="text/css" href="<{$v}>">
+	<{/foreach}>
+<{/foreach}>
+
+<{foreach from=$jsSources item=k}>
+	<{foreach from=$k item=v}>
+	<script type="text/javascript" src="<{$v}>"></script>
+	<{/foreach }>
+<{/foreach}>
+	<script>
+		if($.browser.msie&&($.browser.version == '6.0')||$.browser.version=='7.0'){
+			window.location.href="support.html";
+		}
+	</script>
+</head>
+
+<body>
+<div id="mask"></div>
+<div id="loginBox">
+	<div id="loginBox-title">登录
+  	<!--<span id="loginBox-close"></span>-->
+  </div>
+<!--  <form action='index.php?c=ajax&m=login' method="POST">-->
+  	<div>
+    	<img src="<{$IMG}>/user.png" />
+    	<input type="text" name='username' id="login-input">
+    </div>
+    <div>
+    	<img src="<{$IMG}>/password.png" />
+    	<input type="password" name='userpwd' id="login-password">
+    </div>
+    <div id="login-register">
+		
+		<a href="http://202.202.43.125/user/register" id="login-register-text">注册</a> | <a href="http://202.202.43.125/user/resetpassword">忘记密码</a>
+    </div>
+    <input type="submit" value="登录" name='do' id="login-button" onclick='login()'/>
+ <!-- </form>-->
+
+</div>
+<div id="nav">
+	<div id="nav-wrap">
+    <div id="nav-logo"></div>
+    <div id="nav-personal">
+		<{if $isLogin}>
+		您好，<span style="color:#b9e9ce;"><{$userName}></span>！<a href="javascript:" onclick='quit()'>[退出]</a>|<a href="index.php?c=personal&uid=<{$userUid}>" style="color:#b9e9ce;">个人中心</a>
+		<{else}>
+    	<a href="#" id="nav-personal-login">登录</a>|
+		<a href="http://202.202.43.125/user/user.php" target='blank' id="nav-personal-register">注册</a>
+		<{/if}>
+    	
+    </div>
+    <div id="nav-link">
+    	<ul>
+      	<li><a href="index.php" id="nav-link-index">首页</a>|</li>
+        <li><a href="index.php?c=literature" id="nav-link-literature">文学</a>|</li>
+        <li><a href="index.php?c=photo" id="nav-link-photo">爱拍</a>|</li>
+        <li><a href="index.php?c=read" id="nav-link-read">读书·影逝</a>|</li>
+        <li><a href="index.php?c=movie" id="nav-link-movie">微电影</a>|</li>
+        <li><a href="index.php?c=corporation" id="nav-link-corporation">社氏99°</a>|</li>
+        <li><a href="index.php?c=messages" id="nav-link-message">我话很多的</a></li>
+      </ul>
+    </div>    
+  </div>
+</div>
+<script>
+$(document).ready(function(e) {
+  //登录框
+  $('#nav-personal-login').bind('click',function(){
+		$('#mask').fadeIn();
+		$('#loginBox').css({
+			left:($(window).width() - $('#loginBox').outerWidth())/2,
+			top: ($(window).height() - $('#loginBox').outerHeight())/2 + $(document).scrollTop()
+		}).fadeIn();
+	});
+	$('#loginBox').keydown(function(e){
+		if(e.keyCode == 13){
+			login();
+		}
+	});
+	$('#loginBox input').bind('focus',function(){
+		$(this).css({background:'#d2efd7'});
+	}).bind('focusout',function(){
+		$(this).siblings('img').fadeIn();
+		$(this).css({background:'#eaffee'});
+	});
+	$('#mask').bind('click',function(){
+		$('#mask').fadeOut();
+		$('#loginBox').fadeOut();
+	})
+});
+function login(){
+	
+	var u=$("#login-input").val();
+	var p=$("#login-password").val();
+	$.ajax({
+	   type: "POST",
+	   url: "index.php?c=ajax&m=login",
+	   data: "username="+u+"&userpwd="+p+"&do=login",
+	   dataType:'json',
+	   success: function(msg){
+			if(msg){
+				$("#nav-personal").html('');
+				$("#nav-personal").append(""+msg.userName+"<a href='javascript:' onclick='quit()' style='color:red;padding:0px 10px'>注销</a>|<a href='"+msg.userId+"'>个人中心</a>");
+				$('#mask').fadeOut();
+				$('#loginBox').fadeOut();
+				
+				window.location.href='';
+			}else{
+				alert("帐号密码错误");
+			}
+		}
+	});
+}
+
+function quit(){
+	$.ajax({
+	   type: "POST",
+	   url: "index.php?c=ajax&m=quit",
+	   data: "do=quit",
+	   dataType:'json',
+	   success: function(msg){
+			if(msg){
+				$("#nav-personal").html('');
+				$("#nav-personal").append("<a href='javascript:void' id='nav-personal-login'>登录</a>|<a href='http://202.202.43.125/user/user.php' target='blank' id='nav-personal-register'>注册</a>");
+				window.location.href='';
+			}else{
+				alert("退出失败！");
+			}
+		}
+	});
+}
+</script>
